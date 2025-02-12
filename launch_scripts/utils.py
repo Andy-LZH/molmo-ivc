@@ -330,6 +330,36 @@ OLMO_1024_PREVIEW = ModelConfig(
     image_padding_embed="pad_and_partial_pad",
 )
 
+# hacked from https://huggingface.co/Qwen/Qwen2-0.5B/blob/main/config.json
+QWEN2_05B = ModelConfig(
+    vocab_size= 152064,
+    max_sequence_length=4096,
+    residual_dropout=0,
+    embedding_dropout=0,
+    response_residual_dropout=0,
+    attention_dropout=0,
+    rope=True,
+    qkv_bias=True,
+    weight_tying=False,
+    include_bias=False,
+    embedding_size=152064,
+    d_model=896, # hidden_size in the config
+    mlp_hidden_size=4864*2, # intermediate_size in the config TODO figure out why *2
+    n_layers=24, # num_hidden_layers in the config
+    additional_vocab_size=128,
+    n_heads=14,
+    n_kv_heads=2, # num_key_value_heads
+    rope_theta=1000000.0,
+    layer_norm_eps=1e-6,
+    layer_norm_type=LayerNormType.rms,
+    tokenizer=TokenizerConfig(
+        identifier="Qwen/Qwen2-0.5B",
+    ),
+    image_pooling_2d="attention_meanq",
+    image_padding_embed="pad_and_partial_pad",
+)
+
+
 
 QWEN2_7B = ModelConfig(
     vocab_size=152064,
@@ -398,6 +428,7 @@ DEFAULT_LOAD_PATHS = {
     "metaclip_l14_336": "${oc.env:MOLMO_DATA_DIR}/pretrained_image_encoders/metaclip-l14-336.pt",
     "olmoe": "${oc.env:MOLMO_DATA_DIR}/pretrained_llms/olmoe.pt",
     "olmo_1024_preview": "${oc.env:MOLMO_DATA_DIR}/pretrained_llms/olmo-1024-preview.pt",
+    "qwen2_05b": "${oc.env:MOLMO_DATA_DIR}/pretrained_llms/qwen2-05b.pt",
     "qwen2_7b": "${oc.env:MOLMO_DATA_DIR}/pretrained_llms/qwen2-7b.pt",
     "qwen2_72b": "${oc.env:MOLMO_DATA_DIR}/pretrained_llms/qwen2-70b.pt",
 }
@@ -414,6 +445,7 @@ VISION_BACKBONES: Dict[str, VisionBackboneConfig] = {
 LLMS: Dict[str, ModelConfig] = {
     "olmoe": OLMOE,
     "olmo_1024_preview": OLMO_1024_PREVIEW,
+    "qwen2_05b": QWEN2_05B,
     "qwen2_7b": QWEN2_7B,
     "qwen2_72b": QWEN2_72B,
 }
