@@ -126,19 +126,19 @@ if __name__ == "__main__":
         ]
         tasks = [
             ["demo", [
-                "pixmo_ask_model_anything",
-                ("pixmo_cap", 50000),
-                "pixmo_cap_qa",
-                "pixmo_pointing_explanations"
+                # "pixmo_ask_model_anything",
+                # ("pixmo_cap", 50000),
+                # "pixmo_cap_qa",
+                # "pixmo_pointing_explanations"
             ], 0.15],
             ["aux", aux, 0.50],
             ["pointing", [
-                "pixmo_points",
+                # "pixmo_points",
                 "pixmo_count",
-                "pixmo_points_high_freq",
-                "pixmo_points_counting",
-                "pixmo_points_high_freq_counting",
-                "pixmo_count_counting",
+                # "pixmo_points_high_freq",
+                # "pixmo_points_counting",
+                # "pixmo_points_high_freq_counting",
+                # "pixmo_count_counting",
             ], 0.35]
         ]
     else:

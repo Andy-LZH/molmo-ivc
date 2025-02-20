@@ -36,6 +36,7 @@ dependencies = [
     "tqdm",
     "gcsfs==2023.9.2",
     "accelerate"
+    "flax",
 ]
 
 [project.optional-dependencies]

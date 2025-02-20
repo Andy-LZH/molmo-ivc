@@ -332,7 +332,7 @@ OLMO_1024_PREVIEW = ModelConfig(
 
 # hacked from https://huggingface.co/Qwen/Qwen2-0.5B/blob/main/config.json
 QWEN2_05B = ModelConfig(
-    vocab_size= 152064,
+    vocab_size= 151936,
     max_sequence_length=4096,
     residual_dropout=0,
     embedding_dropout=0,
@@ -342,7 +342,7 @@ QWEN2_05B = ModelConfig(
     qkv_bias=True,
     weight_tying=False,
     include_bias=False,
-    embedding_size=152064,
+    embedding_size=151936,
     d_model=896, # hidden_size in the config
     mlp_hidden_size=4864*2, # intermediate_size in the config TODO figure out why *2
     n_layers=24, # num_hidden_layers in the config

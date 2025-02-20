@@ -485,6 +485,7 @@ CONVERT_FNS = {
     "metaclip_l14_336": convert_state_dict_clip,
     "olmoe": convert_state_dict_olmoe,
     "olmo_1024_preview": convert_state_dict_olmo_1024_preview,
+    "qwen2_05b": convert_state_dict_qwen2,
     "qwen2_7b": convert_state_dict_qwen2,
     "qwen2_72b": convert_state_dict_qwen2,
 }
@@ -501,6 +502,7 @@ VIT_HF_SOURCES  = {
 LLM_HF_SOURCES = {
     "olmoe": "allenai/OLMoE-1B-7B-0924",
     "olmo_1024_preview": "allenai/OLMo-7B-1024-preview",
+    "qwen2_05b": "Qwen/Qwen2-0.5B",
     "qwen2_7b": "Qwen/Qwen2-7B",
     "qwen2_72b": "Qwen/Qwen2-72B",
 }
