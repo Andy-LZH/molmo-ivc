@@ -145,19 +145,19 @@ def get_evaluation(name, seq_len, batch_size, max_examples, num_workers=2) -> Da
 
 DEFAULT_VISION_BACKBONE = VisionBackboneConfig(
     image_model_type="openai",
-    image_default_input_size=(336, 336),
-    image_patch_size=14,
-    image_pos_patch_size=14,
-    image_emb_dim=1024,
-    image_num_heads=16,
-    image_num_key_value_heads=16,
-    image_num_layers=23,
+    image_default_input_size=(336, 336), # image_size 
+    image_patch_size=14, # patch_size
+    image_pos_patch_size=14, # patch_size
+    image_emb_dim=1024, # hidden_size
+    image_num_heads=16, # num_attention_heads
+    image_num_key_value_heads=16, # num_attention_heads
+    image_num_layers=23, # num_hidden_layers
     image_head_dim=64,
-    image_mlp_dim=4096,
+    image_mlp_dim=4096, # intermediate_size
     image_mlp_activations="quick_gelu",
     image_dropout_rate=0.0,
     image_num_pos=577,
-    image_norm_eps=1e-5,
+    image_norm_eps=1e-5, # layer_norm_eps
     attention_dropout=0.0,
     residual_dropout=0.0,
     initializer_range=0.02,
@@ -227,6 +227,26 @@ METACLIP_L14_336_VISION_BACKBONE = VisionBackboneConfig(
     residual_dropout=0.0,
     initializer_range=0.02,
     resize_mode="metaclip",
+)
+
+CLIP_B16_VISION_BACKBONE = VisionBackboneConfig(
+    image_model_type="openai",
+    image_default_input_size=(224, 224), # image_size 
+    image_patch_size=16, # patch_size
+    image_pos_patch_size=16, # patch_size
+    image_emb_dim=768, # hidden_size
+    image_num_heads=12, # num_attention_heads
+    image_num_key_value_heads=12, # num_attention_heads
+    image_num_layers=12, # num_hidden_layers-1
+    image_head_dim=64, # TODO check this heade dimension
+    image_mlp_dim=3072, # intermediate_size
+    image_mlp_activations="quick_gelu",
+    image_dropout_rate=0.0,
+    image_num_pos=197, # 597->197
+    image_norm_eps=1e-5, # layer_norm_eps
+    attention_dropout=0.0,
+    residual_dropout=0.0,
+    initializer_range=0.02,
 )
 
 
@@ -423,6 +443,7 @@ QWEN2_72B = ModelConfig(
 
 DEFAULT_LOAD_PATHS = {
     "openai": "${oc.env:MOLMO_DATA_DIR}/pretrained_image_encoders/vit-l-14-336.pt",
+    "openai_clip_b16": "${oc.env:MOLMO_DATA_DIR}/pretrained_image_encoders/clip-b16.pt",
     "siglip": "${oc.env:MOLMO_DATA_DIR}/pretrained_image_encoders/siglip-so400m-14-384.pt",
     "dinov2_large_336": "${oc.env:MOLMO_DATA_DIR}/pretrained_image_encoders/dinov2-large-336.pt",
     "metaclip_l14_336": "${oc.env:MOLMO_DATA_DIR}/pretrained_image_encoders/metaclip-l14-336.pt",
@@ -436,6 +457,7 @@ DEFAULT_LOAD_PATHS = {
 
 VISION_BACKBONES: Dict[str, VisionBackboneConfig] = {
     "openai": DEFAULT_VISION_BACKBONE,
+    "openai_clip_b16": CLIP_B16_VISION_BACKBONE,
     "siglip": SIGLIP_VISION_BACKBONE,
     "dinov2_large_336": DINOV2_LARGE_336_VISION_BACKBONE,
     "metaclip_l14_336": METACLIP_L14_336_VISION_BACKBONE,

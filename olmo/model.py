@@ -1461,7 +1461,7 @@ class MolmoVisionBackbone(nn.Module):
                 local_cache=vit_load_path.parent,
             )
             assert state_dict_path.is_file(), f"Model file {str(state_dict_path)} not found"
-            state_dict = torch.load(state_dict_path, map_location="cpu", weights_only=False)
+            state_dict = torch.load(state_dict_path, map_location="cpu")
             self.image_vit.load_state_dict(state_dict)
         else:
             self.image_vit.reset_parameters()

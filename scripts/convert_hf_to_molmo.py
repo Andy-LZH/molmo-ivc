@@ -126,6 +126,7 @@ def convert_state_dict_clip(state_dict, vision_config: VisionBackboneConfig) -> 
         "transformer": dict(resblocks=resblocks),
     }
     out = flatten_dict(out, sep=".")
+    print(out.keys())
     del state_dict["post_layernorm"]
     for k in flatten_dict(state_dict):
         raise ValueError("Unused parameter:", k)
@@ -480,6 +481,7 @@ def get_default_load_path(model_name: str) -> str:
 
 CONVERT_FNS = {
     "openai": convert_state_dict_clip,
+    "openai_clip_b16": convert_state_dict_clip,
     "siglip": convert_state_dict_siglip,
     "dinov2_large_336": convert_state_dict_dino,
     "metaclip_l14_336": convert_state_dict_clip,
@@ -493,6 +495,7 @@ CONVERT_FNS = {
 
 VIT_HF_SOURCES  = {
     "openai": "openai/clip-vit-large-patch14-336",
+    "openai_clip_b16": "openai/clip-vit-base-patch16",
     "siglip": "google/siglip-so400m-patch14-384",
     "dinov2_large_336": "facebook/dinov2-large",
     "metaclip_l14_336": "facebook/metaclip-l14-fullcc2.5b",
