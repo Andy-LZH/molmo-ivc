@@ -72,7 +72,7 @@ if __name__ == "__main__":
         log_interval = 20
         global_batch_size = args.global_batch_size
         n = len(PixMoCap("train", "captions"))
-        duration = 4 * (n + global_batch_size - 1) // global_batch_size
+        duration = 2 * (n + global_batch_size - 1) // global_batch_size # cut training time to half
         eval_interval = 1000
         vit_layers = [-2, -9] if args.vision_backbone == "openai" else [-3, -9]
         model_cfg = replace(
@@ -172,7 +172,7 @@ if __name__ == "__main__":
         save_dataloader_state=False,
         save_interval=4000,
         save_num_checkpoints_to_keep=1,
-        save_interval_unsharded="${max_duration}",
+        save_interval_unsharded=10000,
         global_train_batch_size=global_batch_size,
         device_eval_batch_size=args.device_eval_batch_size,
         device_train_microbatch_size=4,

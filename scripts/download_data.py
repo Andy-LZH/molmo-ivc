@@ -16,12 +16,20 @@ ACADEMIC_EVAL = [
     AndroidControl, AI2D, CountBenchQa, RealWorldQa, MathVista, MMMU
 ]
 
-ACADEMIC_DATASETS = [
-    ChartQa, ScienceQAImageOnly, TextVqa, OkVqa, DocQa,
-    InfoQa, AOkVqa, PlotQa, FigureQa, DvQa, SceneTextQa, TabWMPDirectAnswer,
-    TallyQa, AI2D, CountBenchQa, RealWorldQa, MathVista, MMMU,
-    Vqa2, AndroidControl
-]
+
+# ACADEMIC_DATASETS = [
+#     ChartQa, ScienceQAImageOnly, TextVqa, OkVqa, DocQa,
+#     InfoQa, AOkVqa, PlotQa, FigureQa, DvQa, SceneTextQa, TabWMPDirectAnswer,
+#     TallyQa, AI2D, CountBenchQa, RealWorldQa, MathVista, MMMU,
+#     Vqa2 AndroidControl
+# ]
+
+# ACADEMIC_DATASETS = [
+#     ChartQa, ScienceQAImageOnly, TextVqa, OkVqa, DocQa,
+#     InfoQa, AOkVqa, FigureQa, DvQa, TabWMPDirectAnswer,
+#     TallyQa, AI2D, CountBenchQa, RealWorldQa, MathVista, MMMU,
+#     Vqa2
+# ]
 
 PIXMO_DATASETS = [
     PixMoDocs, PixMoCount, PixMoPoints, PixMoCapQa, PixMoCap, PixMoPointExplanations,

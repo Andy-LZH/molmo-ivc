@@ -1,0 +1,1 @@
+WANDB_API_KEY=16411c5c1b8a0dec586ab64ac7b8b2797acaa5ac PYTHONPATH=. torchrun --nproc-per-node=3 launch_scripts/train_captioner.py qwen2_05b --vision_backbone=openai --wandb.name=qwen05b_vitl14 --wandb.project=molmo-ivc --wandb.entity=darthandy --save_folder=/scratch/alpine/zhli3162/data/molmo/qwen_05b_vit_l14 --global_batch_size=15 --save-overwrite

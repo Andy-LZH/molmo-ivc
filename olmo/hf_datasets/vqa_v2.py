@@ -114,12 +114,12 @@ class VQAv2BuilderMultiQA(datasets.GeneratorBasedBuilder):
         downloaded_pointer["images"] = dl_manager.download(_URLS_IMAGES)
 
         # Download the images manually
-        # if not os.path.exists(f"{self.vqa_source}/train2014.zip"):
-        #     download_file(_URLS_IMAGES["train"], f"{self.vqa_source}/train2014.zip")
-        # if not os.path.exists(f"{self.vqa_source}/val2014.zip"):
-        #     download_file(_URLS_IMAGES["val"], f"{self.vqa_source}/val2014.zip")
-        # if not os.path.exists(f"{self.vqa_source}/test2015.zip"):
-        #     download_file(_URLS_IMAGES["test"], f"{self.vqa_source}/test2015.zip")
+        if not os.path.exists(f"{self.vqa_source}/train2014.zip"):
+            download_file(_URLS_IMAGES["train"], f"{self.vqa_source}/train2014.zip")
+        if not os.path.exists(f"{self.vqa_source}/val2014.zip"):
+            download_file(_URLS_IMAGES["val"], f"{self.vqa_source}/val2014.zip")
+        if not os.path.exists(f"{self.vqa_source}/test2015.zip"):
+            download_file(_URLS_IMAGES["test"], f"{self.vqa_source}/test2015.zip")
         #
         downloaded_pointer["images"] = {
             "train": f"{self.vqa_source}/train2014.zip",

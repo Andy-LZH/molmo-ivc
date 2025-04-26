@@ -62,7 +62,7 @@ class PlotQaBuilder(datasets.GeneratorBasedBuilder):
                     answer=str(answer),
                     question_id=q["question_id"],
                 ))
-            with open(join(image_dir, "png", str(image_index) + ".png")) as f:
+            with open(join(image_dir, "png", str(image_index) + ".png"), 'rb') as f:
                 image_bytes = f.read()
             yield image_index, dict(
                 image=image_bytes,

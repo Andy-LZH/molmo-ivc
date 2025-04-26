@@ -36,12 +36,12 @@ AUX = [
     "ai2_diagram_v2_mix_transparent",
     "a_okvqa_mc",
     "a_okvqa_da",
-    "android_control",
-
+    # "android_control", TODO this dataset has problems
+ 
     # Some other datasets we might want to eval on
     "science_qa_img",
     "tabwmp_da",
-    "st_qa",
+    # "st_qa", # TODO this dataset has problems
     "tally_qa",
 
     # ("clocks", 250000),  # Downsample since it is huge
@@ -53,7 +53,7 @@ AUX = [
     # # Other synthetic data, also downsampled since they are huge
     ("dv_qa", 10000),
     ("figure_qa", 10000),
-    ("plot_qa", 20000),
+    # ("plot_qa", 20000), TODO this dataset has problems
 ]
 
 
@@ -120,25 +120,25 @@ if __name__ == "__main__":
             "ai2_diagram_v2_mix_transparent",
             "coco_2014_vqa_multi",
             # "clocks",
-            "android_control_ll",
+            # "android_control_ll",
             "pointing_eval:test",
             "countbench_qa:huggingface"
         ]
         tasks = [
             ["demo", [
-                # "pixmo_ask_model_anything",
-                # ("pixmo_cap", 50000),
-                # "pixmo_cap_qa",
-                # "pixmo_pointing_explanations"
+                "pixmo_ask_model_anything",
+                ("pixmo_cap", 50000),
+                "pixmo_cap_qa",
+                "pixmo_pointing_explanations"
             ], 0.15],
             ["aux", aux, 0.50],
             ["pointing", [
-                # "pixmo_points",
+                "pixmo_points",
                 "pixmo_count",
-                # "pixmo_points_high_freq",
-                # "pixmo_points_counting",
-                # "pixmo_points_high_freq_counting",
-                # "pixmo_count_counting",
+                "pixmo_points_high_freq",
+                "pixmo_points_counting",
+                "pixmo_points_high_freq_counting",
+                "pixmo_count_counting",
             ], 0.35]
         ]
     else:
@@ -168,9 +168,9 @@ if __name__ == "__main__":
         max_inf_examples = args.max_inf_examples
         log_interval = 20
         global_batch_size = args.global_batch_size
-        inf_eval_interval = 2000
-        eval_interval = 2000
-        duration = 30000
+        inf_eval_interval = 5000
+        eval_interval = 5000
+        duration = ((30000 * 256) // args.global_batch_size) // 4 # 256 is molmo batch size, we train on 25% of total examples
         model_init = args.checkpoint
         if exists(join(args.checkpoint, "model.yaml")):
             model_cfg = ModelConfig.load(join(args.checkpoint, "model.yaml"))
@@ -270,9 +270,9 @@ if __name__ == "__main__":
         ),
         load_path=None,
         initial_model_checkpoint=None if "debug" in args.checkpoint else args.checkpoint,
-        save_interval=4000,
+        save_interval=10000,
         save_num_checkpoints_to_keep=1,
-        save_interval_unsharded="${max_duration}",
+        save_interval_unsharded=10000,  
         global_train_batch_size=global_batch_size,
         device_inf_eval_batch_size=args.device_inf_batch_size,
         device_eval_batch_size=args.device_eval_batch_size,

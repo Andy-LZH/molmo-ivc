@@ -43,7 +43,7 @@ def draw_abc_labels(image_f, annotations, mode="in_box", use_transparent=False):
         draw = ImageDraw(image, "RGB")
 
     # Load the font
-    font_name = "Arial.ttf"
+    font_name = "/usr/share/fonts/dejavu/DejaVuSans.ttf"
 
     for text_box in annotations["text"].values():
         (x1, y1), (x2, y2) = text_box["rectangle"]

@@ -35,7 +35,7 @@ dependencies = [
     "einops-exts",
     "tqdm",
     "gcsfs==2023.9.2",
-    "accelerate"
+    "accelerate",
     "flax",
 ]
 

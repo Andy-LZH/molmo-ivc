@@ -11,9 +11,6 @@ from transformers.activations import get_activation
 
 from .config import ModelConfig, AttentionType
 
-import logging
-log = logging.getLogger("train")
-
 
 def _expand_token(token, batch_size: int):
     return token.view(1, 1, -1).expand(batch_size, -1, -1)
@@ -207,9 +204,6 @@ class BlockCollection(nn.Module):
         hidden_states = []
         counter = 0
         for r in self.resblocks:
-            log.info(f"BlockCollection: resblock: {counter}")
-            log.info(f"BlockCollection: {r}")
-            log.info(f"BlockCollection: {x.shape}")
             counter += 1
             if self.grad_checkpointing and not torch.jit.is_scripting():
                 x = self._activation_checkpoint_fn(r, x)
