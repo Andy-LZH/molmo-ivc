@@ -1,0 +1,31 @@
+[
+    {
+        "id": 0,
+        "image_id": 0,
+        "category_id": 0,
+        "segmentation": {
+            "size": [
+                375,
+                500
+            ],
+            "counts": "YeW23c;2N3M2M4N1N1N3N1O2N2N1O1O001N101O1O001TOA_F?`9GZF;d9JXF6h9m0N2N101N101O001O1O0010O01O0M4K4O2N101O001O10O010O010000O1000O010000O1000000000001O000000001O000000001O01O01O00001O0000001O00001O00001O00010O00001O01O0001O01O01O01O0000010O001O1O1O1O1O2N1O1O1N2O1O1O3M4L4L3L5K5K5K4M8G9G:E:AZ\\n1"
+        },
+        "area": 9666,
+        "bbox": [
+            195.0,
+            169.0,
+            134.0,
+            104.0
+        ],
+        "iscrowd": 0,
+        "prompts": "Point out Quadruped Head in the image.",
+        "generated_text": " <point x=\"53.0\" y=\"60.5\" alt=\"Quadruped Head\">Quadruped Head</point>",
+        "generated_points": [
+            [
+                265.0,
+                226.875
+            ]
+        ],
+        "output_image": "PartImageNet/Molmo7B/generated_points_0.png"
+    }
+]

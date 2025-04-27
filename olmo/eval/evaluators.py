@@ -226,7 +226,7 @@ class SavePredictions(Evaluator):
                 log.info("done saving json")
         return metrics
 
-
+# NOTE: this function calculate the precision and recall of the points
 def is_point_in_region(point: Tuple[float, float], mask: np.ndarray) -> bool:
     """
     Check if the point (x, y) is within the region defined by the boolean mask.
